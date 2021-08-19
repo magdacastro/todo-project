@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <h3>{{ title }}</h3>
+  </div>
+</div>
+
+<div class="container border">
+  <div class="row mt-3">
+    <div class="col-lg-6">
+      <label>My task</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Description"
+        aria-label=""
+      />
+    </div>
+    <div class="col-lg-2">
+      <label>Date</label>
+      <input
+        type="date"
+        class="form-control"
+        placeholder="date"
+        aria-label=""
+      />
+    </div>
+    <div class="col-lg-2">
+      <label>Category</label>
+      <select class="form-select" aria-label="Category">
+        <option value="{{category.value}}" *ngFor="let category of categories">{{category.name}}</option>
+      </select>
+    </div>
+    <div class="col-lg-2">
+      <label>Priority</label>
+      <select class="form-select" aria-label="Priority">
+        <option value="{{priority.value}}" *ngFor="let priority of priorities">{{priority.name}}</option>
+      </select>
+    </div>
+  </div>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Task</th>
+        <th scope="col">Date</th>
+        <th scope="col">Category</th>
+        <th scope="col">Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <th scope="row">
+          <input type="checkbox" [checked]="task.checked" (change)="task.checked">
+        </th>
+        <td>{{ task.description }}</td>
+        <td>{{getDate(task.date)}}</td>
+        <td>{{getCategoryName(task.category)}}</td>
+        <td>{{getPriorityName(task.priority)}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <td><i class="fas fa-trash-alt"></i></td>
+  <td><i class="far fa-edit"></i></td>
+</div>
