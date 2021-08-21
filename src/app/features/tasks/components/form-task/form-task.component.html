@@ -1,0 +1,50 @@
+<div class="container border">
+  <div class="row mt-3">
+    <div class="col-lg-6">
+      <label>My task</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Description"
+        aria-label=""
+        [(ngModel)] = "inputTask"
+      />
+    </div>
+    <div class="col-lg-2">
+      <label>Date</label>
+      <input
+        type="date"
+        class="form-control"
+        placeholder="date"
+        aria-label=""
+        [(ngModel)] = "inputDate"
+      />
+    </div>
+    <div class="col-lg-2">
+      <label>Category</label>
+      <select class="form-select" aria-label="Category" [(ngModel)] = "inputCategory">
+        <option
+          value="{{ category.value }}"
+          *ngFor="let category of categories"
+        >
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+    <div class="col-lg-2">
+      <label>Priority</label>
+      <select class="form-select" aria-label="Priority" [(ngModel)] = "inputPriority">
+        <option
+          value="{{ priority.value }}"
+          *ngFor="let priority of priorities">
+          {{ priority.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="d-flex justify-content-end p-2">
+      <button type="button" class="btn btn-outline-primary" (click)="onSubmit()">Add</button>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,7 @@ export interface Priority {
 }
 
 export interface Task {
-  id: number;
+  id?: number;
   checked: boolean;
   description: string;
   date: string;
