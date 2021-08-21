@@ -13,6 +13,7 @@
         <th scope="col">Date</th>
         <th scope="col">Category</th>
         <th scope="col">Priority</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -22,15 +23,17 @@
             type="checkbox"
             [checked]="task.checked"
             (change)="(task.checked)"
+            (click)="toggleEdit(task.id)"
           />
         </th>
         <td>{{ task.description }}</td>
         <td>{{ getDate(task.date) }}</td>
         <td>{{ getCategoryName(task.category) }}</td>
         <td>{{ getPriorityName(task.priority) }}</td>
+        <td><a href="#" class="btn d-inline disabled" (click)="deleteItem(task.id)" [ngClass]="{'disabled': task.checked == false}"><i class="fas fa-trash-alt"></i></a></td>
       </tr>
     </tbody>
   </table>
-  <td><i class="fas fa-trash-alt"></i></td>
-  <td><i class="far fa-edit"></i></td>
+  <!--<td><i class="fas fa-trash-alt"></i></td>
+  <td><i class="far fa-edit"></i></td>-->
 </div>

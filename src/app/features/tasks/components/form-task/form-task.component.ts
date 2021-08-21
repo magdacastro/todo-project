@@ -14,20 +14,24 @@ import {
 })
 export class FormTaskComponent implements OnInit {
   @Output() newTaskEvent = new EventEmitter<Task>();
-  taskStatusById: Record<number, boolean> = {};
+
   categories: Array<Category>;
   priorities: Array<Priority>;
   tasks: Array<Task>;
 
-  inputTask: string = '';
-  inputDate: string = '';
-  inputCategory: number = 0;
-  inputPriority: number = 0;
+  inputTask: string;
+  inputDate: string;
+  inputCategory: number;
+  inputPriority: number;
 
   constructor() {
     this.categories = categories;
     this.priorities = priorities;
     this.tasks = tasks;
+    this.inputTask = '';
+    this.inputDate = '';
+    this.inputCategory = 1;
+    this.inputPriority = 1;
   }
 
   onSubmit() {
@@ -38,6 +42,14 @@ export class FormTaskComponent implements OnInit {
       priority: this.inputPriority,
       checked: false,
     });
+    this.initValues();
+  }
+
+  initValues() {
+    this.inputTask = '';
+    this.inputDate = '';
+    this.inputCategory = 1;
+    this.inputPriority = 1;
   }
 
   ngOnInit(): void {}
