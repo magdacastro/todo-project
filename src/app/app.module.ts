@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { TasksModule } from './features/tasks/tasks.module';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginModule } from './features/login/login.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     SharedModule,
     TasksModule,
+    LoginModule,
     AppRoutingModule
   ],
   providers: [],
