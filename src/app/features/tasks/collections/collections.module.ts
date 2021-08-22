@@ -1,4 +1,4 @@
-import { Task, Category, Priority, Filter} from '../models/task.module'
+import { Task, Category, Priority, Filter} from '../models/task.model'
 
 export const categories: Array<Category> = [
     { name: 'Work', value: 1 },

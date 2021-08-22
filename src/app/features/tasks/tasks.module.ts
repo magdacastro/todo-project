@@ -4,12 +4,13 @@ import { FormsModule }   from '@angular/forms';
 import { ListTaskComponent } from './components/list-task/list-task.component';
 import { FormTaskComponent } from './components/form-task/form-task.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { TaskPageComponent } from './pages/task-page/task-page.component';
 
 @NgModule({
   declarations: [
     ListTaskComponent,
-    FormTaskComponent
+    FormTaskComponent,
+    TaskPageComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +19,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ], 
   exports: [
     ListTaskComponent,
-    FormTaskComponent
+    FormTaskComponent,
   ]
 })
 export class TasksModule { }

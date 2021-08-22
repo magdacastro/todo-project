@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Task, Category, Priority, Filter } from '../../models/task.module';
+import { Task, Category, Priority, Filter } from '../../models/task.model';
 import { tasks, categories, priorities, filters, months } from '../../collections/collections.module';
 @Component({
   selector: 'app-list-task',
@@ -52,6 +52,7 @@ export class ListTaskComponent implements OnInit {
     let pos = this.tasks.findIndex(index => index.id === id);
     this.tasks.splice(pos,1);
   }
+
 
   ngOnInit(): void {}
 }
