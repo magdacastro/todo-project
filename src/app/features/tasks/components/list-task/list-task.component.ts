@@ -1,38 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { Task, Category, Priority } from '../../models/task.module';
-import { tasks, categories, priorities, months } from '../../collections/collections.module';
+import { Task, Category, Priority, Filter } from '../../models/task.module';
+import { tasks, categories, priorities, filters, months } from '../../collections/collections.module';
 @Component({
   selector: 'app-list-task',
   templateUrl: './list-task.component.html',
   styleUrls: ['./list-task.component.scss'],
 })
+
 export class ListTaskComponent implements OnInit {
   title = 'Lista de tarefas';
 
   categories: Array<Category>;
   priorities: Array<Priority>;
   tasks: Array<Task>;
+  filters: Filter;
 
   constructor() {
     this.categories = categories;
     this.priorities = priorities;
     this.tasks = tasks;
+    this.filters = filters;
   }
 
   onSubmitTask(task: Task) {
     this.tasks.push(task);
-  }
-
-  getCategoryName(value: number) {
-    return this.categories.find((cat) => cat.value == value)?.name;
-  }
-
-  getPriorityName(value: number) {
-    return this.priorities.find((prit) => prit.value == value)?.name;
-  }
-
-  getDate(date: string) {
-    return `${months[new Date(date).getMonth()]} ${new Date(date).getDate()}, ${new Date(date).getFullYear()}`;
   }
 
   toggleEdit(id?:number){
@@ -41,6 +32,19 @@ export class ListTaskComponent implements OnInit {
         _task.checked = !_task.checked;
       }
       return _task;
+    });
+  }
+
+  getTasks():Array<Task>{
+    return this.tasks.filter(task => {
+      let e = new RegExp(this.filters.description, 'i');
+      if(e.test(task.description) != true){
+        return null;
+      }
+      /*if(task.priority != 1) {
+        return null;
+      }*/
+      return task;
     });
   }
 

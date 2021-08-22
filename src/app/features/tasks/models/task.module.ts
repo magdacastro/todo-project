@@ -16,3 +16,10 @@ export interface Task {
   category: number;
   priority: number;
 }
+
+export interface Filter {
+  description: string;
+  /*date: string;
+  category: number;
+  priority: number;*/
+}

@@ -5,6 +5,16 @@
 </div>
 <app-form-task (newTaskEvent)="onSubmitTask($event)"></app-form-task>
 <div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filters.description">
+        <button class="btn btn-outline-secondary" type="button" id="btn-filter"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
   <table class="table table-striped mt-3">
     <thead>
       <tr>
@@ -17,7 +27,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasks">
+      <tr *ngFor="let task of getTasks()">
         <th scope="row">
           <input
             type="checkbox"
@@ -27,12 +37,13 @@
           />
         </th>
         <td>{{ task.description }}</td>
-        <td>{{ getDate(task.date) }}</td>
-        <td>{{ getCategoryName(task.category) }}</td>
-        <td>{{ getPriorityName(task.priority) }}</td>
+        <td>{{ task.date | date }} </td>
+        <td>{{ task.category | select:"category" }}</td>
+        <td>{{ task.priority | select:"priority" }}</td>
         <td><a href="#" class="btn d-inline disabled" (click)="deleteItem(task.id)" [ngClass]="{'disabled': task.checked == false}"><i class="fas fa-trash-alt"></i></a></td>
       </tr>
     </tbody>
+    <tfoot *ngIf="getTasks().length == 0">Não há resultados para esta busca</tfoot>
   </table>
   <!--<td><i class="fas fa-trash-alt"></i></td>
   <td><i class="far fa-edit"></i></td>-->
