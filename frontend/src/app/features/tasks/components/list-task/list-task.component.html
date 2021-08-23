@@ -40,7 +40,7 @@
         <td>{{ task.date | date }} </td>
         <td>{{ task.category | select:"category" }}</td>
         <td>{{ task.priority | select:"priority" }}</td>
-        <td><a href="#" class="btn d-inline disabled" (click)="deleteItem(task.id)" [ngClass]="{'disabled': task.checked == false}"><i class="fas fa-trash-alt"></i></a></td>
+        <td><a href="javascript:void(0)" class="btn d-inline disabled" (click)="deleteItem(task.id)" [ngClass]="{'disabled': task.checked == false}"><i class="fas fa-trash-alt"></i></a></td>
       </tr>
     </tbody>
     <tfoot>

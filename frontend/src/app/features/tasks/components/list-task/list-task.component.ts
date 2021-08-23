@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Task, Category, Priority, Filter } from '../../models/task.model';
 import { tasks, categories, priorities, filters, months } from '../../collections/collections.module';
+import { TaskService } from 'src/app/task.service';
 @Component({
   selector: 'app-list-task',
   templateUrl: './list-task.component.html',
   styleUrls: ['./list-task.component.scss'],
 })
+
 
 export class ListTaskComponent implements OnInit {
   title = 'Lista de tarefas';
@@ -15,11 +17,14 @@ export class ListTaskComponent implements OnInit {
   tasks: Array<Task>;
   filters: Filter;
 
-  constructor() {
+  constructor(public http: TaskService) {
     this.categories = categories;
     this.priorities = priorities;
     this.tasks = tasks;
     this.filters = filters;
+    this.http.getTasks().subscribe(data => {
+        this.tasks = data;
+    });
   }
 
   onSubmitTask(task: Task) {
@@ -41,9 +46,6 @@ export class ListTaskComponent implements OnInit {
       if(e.test(task.description) != true){
         return null;
       }
-      /*if(task.priority != 1) {
-        return null;
-      }*/
       return task;
     });
   }
@@ -51,6 +53,7 @@ export class ListTaskComponent implements OnInit {
   deleteItem(id?:number){
     let pos = this.tasks.findIndex(index => index.id === id);
     this.tasks.splice(pos,1);
+    this.http.deleteTask(id);
   }
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { Task, Category, Priority } from '../../models/task.model';
+import { TaskService } from 'src/app/task.service';
 import {
   tasks,
   categories,
@@ -24,7 +25,7 @@ export class FormTaskComponent implements OnInit {
   inputCategory: number;
   inputPriority: number;
 
-  constructor() {
+  constructor(public http: TaskService) {
     this.categories = categories;
     this.priorities = priorities;
     this.tasks = tasks;
@@ -35,13 +36,16 @@ export class FormTaskComponent implements OnInit {
   }
 
   onSubmit() {
-    this.newTaskEvent.emit({
+    const newTask = {
       description: this.inputTask,
       date: this.inputDate,
       category: this.inputCategory,
       priority: this.inputPriority,
       checked: false,
-    });
+    };
+
+    this.newTaskEvent.emit(newTask);
+    this.http.createTask(newTask);
     this.initValues();
   }
 

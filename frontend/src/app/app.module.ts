@@ -5,6 +5,7 @@ import { TasksModule } from './features/tasks/tasks.module';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './features/login/login.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LoginModule } from './features/login/login.module';
     SharedModule,
     TasksModule,
     LoginModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

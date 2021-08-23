@@ -15,7 +15,7 @@ import { TaskPageComponent } from './pages/task-page/task-page.component';
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ], 
   exports: [
     ListTaskComponent,
