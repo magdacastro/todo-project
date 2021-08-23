@@ -64,5 +64,19 @@
       "priority": "2",
       "checked": false
     }
+  ],
+  "users": [
+    {
+      "name": "Magda",
+      "email": "teste@teste.com.br",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "name": "Magda2",
+      "email": "teste@teste.com.br",
+      "password": "123",
+      "id": 2
+    }
   ]
 }

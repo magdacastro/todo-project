@@ -1,12 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { Person } from '../../models/person.model';
+import { AuthService } from 'src/app/auth.service';
+import { Router } from '@angular/router';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
+  
+  public user:Person;
 
-  constructor() { }
+  constructor(private auth:AuthService, private router: Router) { 
+    this.user = {
+      name: "",
+      email: "",
+      password: ""
+    }
+  }
+
+  getLogin(){
+    this.auth.getUsers().subscribe(users => {
+      let isAuth = false;
+      users.forEach((user:any) => {
+        if(user.email === this.user.email && user.password === this.user.password) {
+          isAuth = true;
+        }
+      });
+      isAuth ? this.router.navigate(['/tasks']) : alert("This password doesn´t match to this e-mail");
+    });
+  }
 
   ngOnInit(): void {
   }

@@ -4,11 +4,12 @@ import { LoginPageComponent } from './features/login/pages/login-page/login-page
 import { RegisterPageComponent } from './features/login/pages/register-page/register-page.component';
 import { TaskPageComponent } from './features/tasks/pages/task-page/task-page.component';
 
+
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'tasks'
+    redirectTo: 'login'
   },
   {
     path: 'tasks',

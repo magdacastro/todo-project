@@ -1,4 +1,104 @@
 <app-header></app-header>
-<p>register-page works!</p>
-<app-footer></app-footer>
 
+<section class="bg-register">
+  <div class="container">
+    <div class="row py-4 mt-4 align-items-center">
+      <div class="col-md-7">
+        <img
+          src="../../../../../assets/images/register.jpg"
+          alt=""
+          class="img-fluid mb-3 d-none d-md-block"
+        />
+      </div>
+
+      <div class="col-md-5">
+        <h3>CREATE AN ACCOUNT</h3>
+        <p class="font-italic text-muted mb-0">
+          Create a minimal registeration page using Bootstrap 4 HTML form
+          elements.
+        </p>
+        <form action="#">
+          <div class="row">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="fa fa-user text-muted"></i
+              ></span>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+                [(ngModel)]="user.name"
+                name="name"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon2"
+                ><i class="fa fa-envelope text-muted"></i
+              ></span>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email"
+                aria-label="email"
+                aria-describedby="basic-addon2"
+                [(ngModel)]="user.email"
+                name="email"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon3"
+                ><i class="fa fa-lock text-muted"></i
+              ></span>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                aria-label="password"
+                aria-describedby="basic-addon3"
+                [(ngModel)]="user.password"
+                name="password"
+              />
+            </div>
+
+            <div class="form-group col-lg-12 mx-auto mb-0">
+              <button class="btn btn-primary btn-block py-2" (click)="getRegister()">
+                <span class="font-weight-bold">Create your account</span>
+              </button>
+            </div>
+
+            <div
+              class="
+                form-group
+                col-lg-12
+                mx-auto
+                d-flex
+                align-items-center
+                my-4
+              "
+            >
+              <div class="border-bottom w-100 ml-5"></div>
+              <span
+                class="px-2 small text-muted font-weight-bold text-muted"
+              ></span>
+              <div class="border-bottom w-100 mr-5"></div>
+            </div>
+
+            <div class="text-center w-100">
+              <p class="text-muted font-weight-bold">
+                Already registered?
+                <a href="http://localhost:4200/login" class="text-primary ml-2"
+                  >Login</a
+                >
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
