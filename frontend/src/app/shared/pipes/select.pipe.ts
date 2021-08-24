@@ -9,9 +9,9 @@ export class SelectPipe implements PipeTransform {
   transform(value: number, type: string): string {
     switch(type){
       case "priority":
-        return priorities.find(priority => priority.value === value)?.name ?? "";
+        return priorities.find(priority => priority.value == value)?.name ?? "";
       case "category":
-        return categories.find(category => category.value === value)?.name ?? "";
+        return categories.find(category => category.value == value)?.name ?? "";
     }
     return "";
   }

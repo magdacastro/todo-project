@@ -49,20 +49,12 @@
       "priority": 2
     },
     {
-      "id": 7,
+      "description": "Fazer compras do mês",
+      "date": "2021-08-25",
+      "category": "3",
+      "priority": "2",
       "checked": false,
-      "description": "Limpar a casa",
-      "date": "2021/08/26",
-      "category": 2,
-      "priority": 1
-    },
-    {
-      "description": "ddd",
-      "date": "2021-08-24",
-      "category": 1,
-      "priority": 1,
-      "checked": false,
-      "id": 16
+      "id": 8
     }
   ],
   "users": [
@@ -83,6 +75,12 @@
       "email": "joao@teste.com.br",
       "password": "123",
       "id": 3
+    },
+    {
+      "name": "Monique",
+      "email": "monique@teste.com.br",
+      "password": "123",
+      "id": 4
     }
   ]
 }
