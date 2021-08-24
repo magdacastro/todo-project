@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task, Category, Priority, Filter } from '../../models/task.model';
 import { tasks, categories, priorities, filters, months } from '../../collections/collections.module';
 import { TaskService } from 'src/app/task.service';
+
 @Component({
   selector: 'app-list-task',
   templateUrl: './list-task.component.html',
@@ -10,8 +11,6 @@ import { TaskService } from 'src/app/task.service';
 
 
 export class ListTaskComponent implements OnInit {
-  title = 'Lista de tarefas';
-
   categories: Array<Category>;
   priorities: Array<Priority>;
   tasks: Array<Task>;

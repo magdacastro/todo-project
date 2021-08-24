@@ -1,69 +1,64 @@
-<div class="container">
-  <div class="row">
-    <h3>{{ title }}</h3>
-  </div>
-</div>
-<app-form-task (newTaskEvent)="onSubmitTask($event)"></app-form-task>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4">
-      <div class="input-group">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search..."
-          [(ngModel)]="filters.description"
-        />
-        <button class="btn btn-outline-secondary" type="button" id="btn-filter">
-          <i class="fas fa-search"></i>
-        </button>
+<section class="bg-form">
+  <app-form-task (newTaskEvent)="onSubmitTask($event)"></app-form-task>
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-8">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="filters.description"
+          />
+          <span class="input-group-text text-brown" id="basic-addon"><i class="fas fa-search"></i></span>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class="tableFixHead">
-    <table class="table table-striped mt-3">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Task</th>
-          <th scope="col">Date</th>
-          <th scope="col">Category</th>
-          <th scope="col">Priority</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody id="table">
-        <tr *ngFor="let task of getTasks()">
-          <th scope="row">
-            <input
-              type="checkbox"
-              [checked]="task.checked"
-              (change)="(task.checked)"
-              (click)="toggleEdit(task.id)"
-            />
-          </th>
-          <td>{{ task.description }}</td>
-          <td>{{ task.date | date }}</td>
-          <td>{{ task.category | select: "category" }}</td>
-          <td>{{ task.priority | select: "priority" }}</td>
-          <td>
-            <a
-              href="javascript:void(0)"
-              class="btn d-inline disabled"
-              (click)="deleteItem(task.id)"
-              [ngClass]="{ disabled: task.checked == false }"
-              ><i class="fas fa-trash-alt"></i
-            ></a>
-          </td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr *ngIf="getTasks().length == 0">
-          <td>Não há resultados para esta busca</td>
-        </tr>
-      </tfoot>
-    </table>
+  <div class="container mt-5 mb-5">
+    <div class="tableFixHead">
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Task</th>
+            <th scope="col">Date</th>
+            <th scope="col">Category</th>
+            <th scope="col">Priority</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="table">
+          <tr *ngFor="let task of getTasks()">
+            <th scope="row">
+              <input
+                type="checkbox"
+                [checked]="task.checked"
+                (change)="(task.checked)"
+                (click)="toggleEdit(task.id)"
+              />
+            </th>
+            <td>{{ task.description }}</td>
+            <td>{{ task.date | date }}</td>
+            <td>{{ task.category | select: "category" }}</td>
+            <td>{{ task.priority | select: "priority" }}</td>
+            <td>
+              <a
+                href="javascript:void(0)"
+                class="btn d-inline disabled"
+                (click)="deleteItem(task.id)"
+                [ngClass]="{ disabled: task.checked == false }"
+                ><i class="fas fa-trash-alt"></i
+              ></a>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr *ngIf="getTasks().length == 0">
+            <td>Não há resultados para esta busca</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   </div>
-</div>
+</section>

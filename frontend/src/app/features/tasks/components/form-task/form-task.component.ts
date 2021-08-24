@@ -7,7 +7,7 @@ import {
   categories,
   priorities,
 } from '../../collections/collections.module';
-
+import { Validator } from '../use-cases/form-task-validator';
 @Component({
   selector: 'app-form-task',
   templateUrl: './form-task.component.html',
@@ -35,7 +35,7 @@ export class FormTaskComponent implements OnInit {
     this.inputPriority = 1;
   }
 
-  onSubmit() {
+  getPostData() {
     const newTask = {
       description: this.inputTask,
       date: this.inputDate,
@@ -44,9 +44,42 @@ export class FormTaskComponent implements OnInit {
       checked: false,
     };
 
-    this.newTaskEvent.emit(newTask);
-    this.http.createTask(newTask);
-    this.initValues();
+    if(Validator.Text(newTask.description) === false) {
+      return {
+        status: false,
+        nessage: 'The description must be filled.',
+      };
+    }
+
+    if (Validator.Date(newTask.date) === false) {
+      return {
+        status: false,
+        nessage: 'The date field is incorrect.',
+      };
+    }
+
+    return {
+      status: true,
+      data: {
+        description: this.inputTask,
+        date: this.inputDate,
+        category: this.inputCategory,
+        priority: this.inputPriority,
+        checked: false,
+      },
+    };
+  }
+
+  onSubmit() {
+    const ValidatorResponse = this.getPostData();
+
+    if (ValidatorResponse.status === true) {
+      this.newTaskEvent.emit(<Task>ValidatorResponse.data);
+      this.http.createTask(<Task>ValidatorResponse.data);
+      this.initValues();
+    } else {
+      alert(ValidatorResponse.nessage);
+    }
   }
 
   initValues() {

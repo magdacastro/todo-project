@@ -1,13 +1,62 @@
-.tableFixHead { 
-  overflow: auto; height: 45vh; 
+.tableFixHead {
+  overflow: auto;
+  height: 30vh;
 }
 
 .tableFixHead th {
-  background:#fff;
+  background: #fff;
 }
 
-.tableFixHead thead th { 
-  position: sticky; 
-  top: 0; 
-  z-index: 1; 
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+#btn-filter:focus {
+  box-shadow: none;
+}
+
+.bg-form {
+    height: 100px;
+    background-color: #ec641aa6;
+    /*background-image:
+      linear-gradient(
+        red, #f06d06
+      );*/
+}
+
+#basic-addon{
+  background-color: transparent;
+  border-radius: 5;
+  border: 1px solid #5f1301;
+}
+
+.text-brown {
+  color: #5f1301;
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ff4b00; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c43a00; 
+}
+

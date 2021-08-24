@@ -1,0 +1,33 @@
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.form-select:focus {
+  box-shadow: none !important;
+}
+
+.myForm {
+  border: 1px solid #d7693b;
+}
+
+.text-minus {
+  font-size: 14px;
+  color: #d7693b;
+}
+
+.add-btn {
+  background-color: #d7693b;
+  font-weight: bold;
+  color: #fff;
+}
+
+.add-btn:hover {
+  border: 1px solid #d7693b;
+  background-color: transparent;
+  color: #d7693b;
+}
+
+.add-btn:focus {
+  box-shadow: none;
+}
