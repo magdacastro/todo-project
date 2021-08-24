@@ -1,88 +1,55 @@
-<app-header></app-header>
-
-<section class="bg-login">
-  <div class="container">
-    <div class="row py-4 mt-4 align-items-center">
-      <div class="col-md-7">
+<section class="banner">
+  <div class="container d-flex justify-content-end">
+    <div class="row mold-form">
+      <div class="brand-wrapper">
         <img
-          src="../../../../../assets/images/login.jpg"
-          alt=""
-          class="img-fluid mb-3 d-none d-md-block"
+          src="../../../../../assets/images/logo-routine.svg"
+          alt="logo"
+          class="logo"
         />
       </div>
-
-      <div class="col-md-5">
-        <h3>SIGN IN</h3>
-        <p class="font-italic text-muted mb-0">
-          Create a minimal registeration page using Bootstrap 4 HTML form
-          elements.
-        </p>
-        <form action="#">
-          <div class="row">
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon2"
-                ><i class="fa fa-envelope text-muted"></i
-              ></span>
-              <input
-                type="email"
-                class="form-control"
-                placeholder="Email"
-                aria-label="email"
-                aria-describedby="basic-addon2"
-                [(ngModel)]="user.email"
-                name="email"
-              />
-            </div>
-
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon3"
-                ><i class="fa fa-lock text-muted"></i
-              ></span>
-              <input
-                type="password"
-                class="form-control"
-                placeholder="Password"
-                aria-label="password"
-                aria-describedby="basic-addon3"
-                [(ngModel)]="user.password"
-                name="password"
-              />
-            </div>
-
-            <div class="form-group col-lg-12 mx-auto mb-0">
-              <button class="btn btn-primary btn-block py-2" (click)="getLogin()">
-                <span class="font-weight-bold">Login</span>
-              </button>
-            </div>
-
-            <div
-              class="
-                form-group
-                col-lg-12
-                mx-auto
-                d-flex
-                align-items-center
-                my-4
-              "
-            >
-              <div class="border-bottom w-100 ml-5"></div>
-              <span
-                class="px-2 small text-muted font-weight-bold text-muted"
-              ></span>
-              <div class="border-bottom w-100 mr-5"></div>
-            </div>
-
-            <div class="text-center w-100">
-              <p class="text-muted font-weight-bold">
-                Don´t have an account?
-                <a href="http://localhost:4200/register" class="text-primary ml-2">Sign up</a>
-              </p>
-            </div>
+      <h2 class="login-card-description mt-4 mb-4">Sign into your account</h2>
+      <form action="#" class="">
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"
+              ><i class="fa fa-envelope text-brown"></i
+            ></span>
+            <input
+              type="email"
+              class="form-control myForm"
+              placeholder="Email"
+              [(ngModel)]="user.email"
+              name="email"
+              autocomplete="off"
+            />
           </div>
-        </form>
-      </div>
+  
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon2"
+              ><i class="fa fa-lock text-brown"></i
+            ></span>
+            <input
+              type="password"
+              class="form-control myForm"
+              placeholder="******"
+              [(ngModel)]="user.password"
+              name="password"
+              autocomplete="off"
+            />
+          </div>
+  
+          <div class="form-group">
+            <button class="btn btn-block login-btn mt-4" (click)="getLogin()">
+              <span class="font-weight-bold">Login</span>
+            </button>
+          </div>
+        </div>
+      </form>
+      <p class="login-card-footer-text mt-4">
+        Don't have an account?
+        <a href="http://localhost:4200/register" class="text-modify"
+          >Register here</a>.</p>
     </div>
   </div>
 </section>
-
-<app-footer></app-footer>
