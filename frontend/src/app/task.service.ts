@@ -11,7 +11,7 @@ export class TaskService {
   constructor(public api:ConfigService) { }
 
   getTasks(){
-    return this.api.get(this.apiUrl);
+    return this.api.get(`${this.apiUrl}?_sort=id&_order=desc`);
   }
 
   deleteTask(id?:number){

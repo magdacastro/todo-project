@@ -77,6 +77,12 @@
       "email": "teste@teste.com.br",
       "password": "123",
       "id": 2
+    },
+    {
+      "name": "Joao",
+      "email": "joao@teste.com.br",
+      "password": "123",
+      "id": 3
     }
   ]
 }
