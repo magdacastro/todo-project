@@ -1,0 +1,89 @@
+section {
+  font-family: "Open Sans", sans-serif;
+}
+
+.input-group {
+  width: 55% !important;
+}
+
+.input-group .myForm {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #5f1301;
+  border-radius: 0;
+  width: 75%;
+}
+
+.input-group .myForm:focus {
+  color: #212529;
+  background-color: rgba($color: #fff, $alpha: 0);
+  border-bottom: 1px solid;
+  border-color: #ec641a;
+  outline: 0;
+  box-shadow: none;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+  background: url("../../../../../assets/images/register.jpg");
+  background-size: cover;
+  align-items: center;
+  background-repeat: no-repeat;
+}
+
+.brand-wrapper .logo {
+  height: 35px;
+}
+
+.mold-form {
+  flex-direction: column;
+}
+
+#basic-addon1,
+#basic-addon2,
+#basic-addon3 {
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+}
+
+.text-brown {
+  color: #5f1301;
+}
+
+.register-btn {
+  padding: 13px 20px 12px;
+  background-color: #d7693b;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.register-btn:hover {
+  border: 1px solid #d7693b;
+  background-color: transparent;
+  color: #d7693b;
+}
+
+.register-btn:focus {
+  box-shadow: none;
+}
+
+.register-card-description {
+  color: #5f1301;
+}
+
+.text-modify {
+  color: #d7693b;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-card-footer-text {
+  font-size: 14px;
+  color: #959595;
+}
