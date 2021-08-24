@@ -20,7 +20,7 @@
 <h5>Clone the project: </h5>
 
 ```
-  https://github.com/magdacastro/todo-project.git
+  git clone https://github.com/magdacastro/todo-project.git
 ```
 
 <h5>Open the backend folder and run this:</h5>
