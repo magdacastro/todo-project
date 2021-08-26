@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
+import { Task, UnsavedTask } from './features/tasks/models/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,14 @@ export class TaskService {
   constructor(public api:ConfigService) { }
 
   getTasks(){
-    return this.api.get(`${this.apiUrl}?_sort=id&_order=desc`);
+    return this.api.get<Task[]>(`${this.apiUrl}?_sort=id&_order=desc`);
   }
 
-  deleteTask(id?:number){
+  deleteTask(id:number){
     return this.api.delete(`${this.apiUrl}/${id}`);
   }
 
-  createTask(obj:Object){
-     return this.api.post(this.apiUrl, obj);
+  createTask(obj:UnsavedTask){
+     return this.api.post<Task>(this.apiUrl, obj);
   }
 }

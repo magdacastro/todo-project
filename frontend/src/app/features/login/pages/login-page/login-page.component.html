@@ -3,7 +3,7 @@
     <div class="row mold-form">
       <div class="brand-wrapper">
         <img
-          src="../../../../../assets/images/logo-routine.svg"
+          src="/assets/images/logo-routine.svg"
           alt="logo"
           class="logo"
         />
@@ -24,7 +24,7 @@
               autocomplete="off"
             />
           </div>
-  
+
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon2"
               ><i class="fa fa-lock text-brown"></i
@@ -38,7 +38,7 @@
               autocomplete="off"
             />
           </div>
-  
+
           <div class="form-group">
             <button class="btn btn-block login-btn mt-4" (click)="getLogin()">
               <span class="font-weight-bold">Login</span>
@@ -48,7 +48,7 @@
       </form>
       <p class="login-card-footer-text mt-4">
         Don't have an account?
-        <a href="http://localhost:4200/register" class="text-modify"
+        <a routerLink="/register" class="text-modify"
           >Register here</a>.</p>
     </div>
   </div>

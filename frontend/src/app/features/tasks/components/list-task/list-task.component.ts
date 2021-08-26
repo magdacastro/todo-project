@@ -15,23 +15,29 @@ export class ListTaskComponent implements OnInit {
   priorities: Array<Priority>;
   tasks: Array<Task>;
   filters: Filter;
+  filteredTasks: Array<Task>;
 
   constructor(public http: TaskService) {
     this.categories = categories;
     this.priorities = priorities;
     this.tasks = tasks;
+    this.filteredTasks = tasks;
     this.filters = filters;
     this.http.getTasks().subscribe(data => {
         this.tasks = data;
+        this.filteredTasks = data;
     });
+    // setInterval(() => {
+
+    // }, 50);
   }
 
   onSubmitTask(task: Task) {
     this.tasks.push(task);
   }
 
-  toggleEdit(id?:number){
-    this.tasks = this.tasks.map(_task => {
+  toggleEdit(id:number){
+    this.tasks.forEach(_task => {
       if(_task.id === id){
         _task.checked = !_task.checked;
       }
@@ -40,6 +46,7 @@ export class ListTaskComponent implements OnInit {
   }
 
   getTasks():Array<Task>{
+    console.log('getTasks');
     return this.tasks.filter(task => {
       let e = new RegExp(this.filters.description, 'i');
       if(e.test(task.description) != true){
@@ -49,10 +56,23 @@ export class ListTaskComponent implements OnInit {
     });
   }
 
-  deleteItem(id?:number){
+  deleteItem(id:number){
     let pos = this.tasks.findIndex(index => index.id === id);
     this.tasks.splice(pos,1);
-    this.http.deleteTask(id);
+    this.http.deleteTask(id)
+      .subscribe({
+        next: (data) => {
+          alert('delete success');
+        },
+        error: (data) => {
+          alert('delete error');
+        },
+      });
+  }
+
+  onFilterChange(filter: string) {
+    this.filters.description = filter;
+    this.filteredTasks = this.getTasks();
   }
 
 
