@@ -21,7 +21,4 @@ export type UnsavedTask = Omit<Task, 'id'>;
 
 export interface Filter {
   description: string;
-  /*date: string;
-  category: number;
-  priority: number;*/
 }

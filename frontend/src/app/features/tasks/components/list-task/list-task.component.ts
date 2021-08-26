@@ -33,7 +33,7 @@ export class ListTaskComponent implements OnInit {
   }
 
   onSubmitTask(task: Task) {
-    this.tasks.push(task);
+    this.tasks.unshift(task);
   }
 
   toggleEdit(id:number){
@@ -46,7 +46,6 @@ export class ListTaskComponent implements OnInit {
   }
 
   getTasks():Array<Task>{
-    console.log('getTasks');
     return this.tasks.filter(task => {
       let e = new RegExp(this.filters.description, 'i');
       if(e.test(task.description) != true){
