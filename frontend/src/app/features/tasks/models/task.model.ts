@@ -9,13 +9,15 @@ export interface Priority {
 }
 
 export interface Task {
-  id?: number;
+  id: number;
   checked: boolean;
   description: string;
   date: string;
   category: number;
   priority: number;
 }
+
+export type UnsavedTask = Omit<Task, 'id'>;
 
 export interface Filter {
   description: string;

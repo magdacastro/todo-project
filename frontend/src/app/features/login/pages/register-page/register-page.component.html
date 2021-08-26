@@ -3,13 +3,13 @@
     <div class="row mold-form">
       <div class="brand-wrapper">
         <img
-          src="../../../../../assets/images/logo-routine.svg"
+          src="/assets/images/logo-routine.svg"
           alt="logo"
           class="logo"
         />
       </div>
       <h2 class="register-card-description mt-4 mb-4">Create an account</h2>
-      <form action="#" class="">
+      <form action="#" class="" [formGroup]="userForm">
         <div class="row">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"
@@ -19,7 +19,7 @@
               type="text"
               class="form-control myForm"
               placeholder="Username"
-              [(ngModel)]="user.name"
+              formControlName="name"
               name="name"
               autocomplete="off"
             />
@@ -32,12 +32,12 @@
               type="email"
               class="form-control myForm"
               placeholder="Email"
-              [(ngModel)]="user.email"
+              formControlName="email"
               name="email"
               autocomplete="off"
             />
           </div>
-  
+
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon3"
               ><i class="fa fa-lock text-brown"></i
@@ -46,12 +46,15 @@
               type="password"
               class="form-control myForm"
               placeholder="******"
-              [(ngModel)]="user.password"
+              formControlName="password"
               name="password"
               autocomplete="off"
             />
           </div>
-  
+
+          <pre>{{userForm.value | json}}</pre>
+          <pre>valid: {{userForm.valid}}</pre>
+
           <div class="form-group">
             <button class="btn btn-block register-btn mt-4" (click)="getRegister()">
               <span class="font-weight-bold">Register</span>
@@ -61,7 +64,7 @@
       </form>
       <p class="register-card-footer-text mt-4">
         Already registered?
-        <a href="http://localhost:4200/login" class="text-modify"
+        <a routerLink="/login" class="text-modify"
           >Login here</a>.</p>
     </div>
   </div>

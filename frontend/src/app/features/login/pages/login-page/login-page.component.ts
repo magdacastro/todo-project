@@ -9,10 +9,10 @@ import { stringify } from '@angular/compiler/src/util';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-  
+
   public user:Person;
 
-  constructor(private auth:AuthService, private router: Router) { 
+  constructor(private auth:AuthService, private router: Router) {
     this.user = {
       name: "",
       email: "",
@@ -22,13 +22,13 @@ export class LoginPageComponent implements OnInit {
 
   getLogin(){
     this.auth.getUsers().subscribe(users => {
-      let isAuth = false;
-      users.forEach((user:any) => {
-        if(user.email === this.user.email && user.password === this.user.password) {
-          isAuth = true;
-        }
-      });
-      isAuth ? this.router.navigate(['/tasks']) : alert("This password doesn´t match to this e-mail");
+      const user = users.find((user) => user.email === this.user.email && user.password === this.user.password);
+      if(user) {
+        this.router.navigate(['/tasks']);
+        this.auth.setCurrentUser(user);
+      } else {
+        alert("This password doesn´t match to this e-mail");
+      }
     });
   }
 

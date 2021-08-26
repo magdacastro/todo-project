@@ -17,7 +17,7 @@
         <label class="text-minus">Date</label>
         <input
           type="date"
-          class="form-control form-control-sm myForm" 
+          class="form-control form-control-sm myForm"
           placeholder="date"
           aria-label=""
           [(ngModel)]="inputDate"
@@ -31,7 +31,7 @@
           [(ngModel)]="inputCategory"
         >
           <option
-            value="{{ category.value }}"
+            [value]="category.value"
             *ngFor="let category of categories"
           >
             {{ category.name }}
@@ -46,7 +46,7 @@
           [(ngModel)]="inputPriority"
         >
           <option
-            value="{{ priority.value }}"
+            [value]="priority.value"
             *ngFor="let priority of priorities"
           >
             {{ priority.name }}

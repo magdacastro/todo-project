@@ -8,7 +8,8 @@
             type="text"
             class="form-control"
             placeholder="Search..."
-            [(ngModel)]="filters.description"
+            [ngModel]="filters.description"
+            (ngModelChange)="onFilterChange($event)"
           />
           <span class="input-group-text text-brown" id="basic-addon"><i class="fas fa-search"></i></span>
         </div>
@@ -29,7 +30,7 @@
           </tr>
         </thead>
         <tbody id="table">
-          <tr *ngFor="let task of getTasks()">
+          <tr *ngFor="let task of filteredTasks">
             <th scope="row">
               <input
                 type="checkbox"
@@ -54,11 +55,14 @@
           </tr>
         </tbody>
         <tfoot>
-          <tr *ngIf="getTasks().length == 0">
+          <tr *ngIf="filteredTasks.length == 0">
             <td>Não há resultados para esta busca</td>
           </tr>
         </tfoot>
       </table>
+
+
     </div>
   </div>
 </section>
+<pre>{{tasks | json}}</pre>

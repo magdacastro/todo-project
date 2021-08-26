@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import { Task, Category, Priority } from '../../models/task.model';
+import { Task, Category, Priority, UnsavedTask } from '../../models/task.model';
 import { TaskService } from 'src/app/task.service';
 import {
   tasks,
@@ -8,6 +8,19 @@ import {
   priorities,
 } from '../../collections/collections.module';
 import { Validator } from '../use-cases/form-task-validator';
+export interface PostDataSuccess {
+  status: true;
+  data: UnsavedTask;
+}
+
+export interface PostDataFailure {
+  status: false;
+  message: string;
+}
+
+export type PostData = PostDataSuccess | PostDataFailure;
+
+
 @Component({
   selector: 'app-form-task',
   templateUrl: './form-task.component.html',
@@ -35,8 +48,8 @@ export class FormTaskComponent implements OnInit {
     this.inputPriority = 1;
   }
 
-  getPostData() {
-    const newTask = {
+  getPostData(): PostData {
+    const newTask: UnsavedTask = {
       description: this.inputTask,
       date: this.inputDate,
       category: this.inputCategory,
@@ -47,14 +60,14 @@ export class FormTaskComponent implements OnInit {
     if(Validator.Text(newTask.description) === false) {
       return {
         status: false,
-        nessage: 'The description must be filled.',
+        message: 'The description must be filled.',
       };
     }
 
     if (Validator.Date(newTask.date) === false) {
       return {
         status: false,
-        nessage: 'The date field is incorrect.',
+        message: 'The date field is incorrect.',
       };
     }
 
@@ -74,11 +87,19 @@ export class FormTaskComponent implements OnInit {
     const ValidatorResponse = this.getPostData();
 
     if (ValidatorResponse.status === true) {
-      this.newTaskEvent.emit(<Task>ValidatorResponse.data);
-      this.http.createTask(<Task>ValidatorResponse.data);
-      this.initValues();
+
+      this.http.createTask(ValidatorResponse.data)
+        .subscribe({
+          next: (next) => {
+            this.newTaskEvent.emit(next);
+            this.initValues();
+          },
+          error: () => {
+            alert('submit error')
+          }
+        });
     } else {
-      alert(ValidatorResponse.nessage);
+      alert(ValidatorResponse.message);
     }
   }
 
